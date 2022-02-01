@@ -9,8 +9,8 @@ cg = CoinGeckoAPI()
 
 print("Enter File Path")
 file_getter = Path(input())
-data = pd.read_excel(file_getter)
-data.head()
+data = pd.read_csv(file_getter)
+print(data.head())
 
 
 
