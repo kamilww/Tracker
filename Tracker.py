@@ -1,4 +1,5 @@
 import pandas as pd
+import json
 import os
 import requests
 from pathlib import Path
@@ -10,7 +11,16 @@ cg = CoinGeckoAPI()
 print("Enter File Path")
 file_getter = Path(input())
 data = pd.read_csv(file_getter)
-print(data.head())
+
+coinlist = cg.get_coins_list()
+coin_id = []
+
+for entry in data['Currency']:
+    for item in coinlist:
+        if entry == item['symbol'] or entry.lower() == item['symbol']:
+            coin_id.append(item['id'])
+
+
 
 
 
