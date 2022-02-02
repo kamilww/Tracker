@@ -20,8 +20,8 @@ for entry in data['Currency']:
         if entry == item['symbol'] or entry.lower() == item['symbol']:
             coin_id.append(item['id'])
 
-
-
+coin_id_df = pd.DataFrame(coin_id, columns = ['Coin ID'])
+print(coin_id_df)
 
 
 #crypto_portfolio_analysis = pn.Tabs(
