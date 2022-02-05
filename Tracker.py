@@ -1,10 +1,8 @@
 import pandas as pd
+import re
 import json
-import os
-import requests
 from pathlib import Path
-import panel as pn
-pn.extension('plotly')
+#import matplotlib.pyplot as plt
 from pycoingecko import CoinGeckoAPI
 cg = CoinGeckoAPI()
 
@@ -12,16 +10,11 @@ print("Enter File Path")
 file_getter = Path(input())
 data = pd.read_csv(file_getter)
 
-coinlist = cg.get_coins_list()
-coin_id = []
+API_id_list = data['API id'].tolist()
+API_response = cg.get_coins_markets(vs_currency='usd', ids=API_id_list)
 
-for entry in data['Currency']:
-    for item in coinlist:
-        if entry == item['symbol'] or entry.lower() == item['symbol']:
-            coin_id.append(item['id'])
+print(API_response)
 
-coin_id_df = pd.DataFrame(coin_id, columns = ['Coin ID'])
-print(coin_id_df)
 
 
 #crypto_portfolio_analysis = pn.Tabs(
