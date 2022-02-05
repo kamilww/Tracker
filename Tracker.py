@@ -1,8 +1,9 @@
 import pandas as pd
 import re
 import json
+import requests
 from pathlib import Path
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from pycoingecko import CoinGeckoAPI
 cg = CoinGeckoAPI()
 
