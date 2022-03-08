@@ -93,7 +93,7 @@ for entry in data['total']:
 #calculating top ten holdings
 data_sorted = data.copy()
 data_sorted.sort_values(by = 'total', ascending=False, inplace = True)
-
+print(data)
 
 
 #calculating top ten values by ecosystem
