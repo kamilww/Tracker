@@ -3,6 +3,8 @@ import pandas as pd
 import re
 import json
 import requests
+import datetime as dt
+from csv import writer
 from pathlib import Path
 import matplotlib.pyplot as plt
 from pycoingecko import CoinGeckoAPI
@@ -39,6 +41,9 @@ for entry in data['API id']:
         circulating_supply.append(None)
         total_supply.append(None)
         missing.append(entry)
+
+#appending date to dataframe
+data.insert(0, 'date', dt.datetime.now())
 
 #appending price data to the data dataframe
 data['current price'] = current_price
@@ -93,9 +98,14 @@ for entry in data['total']:
 #calculating top ten holdings
 data_sorted = data.copy()
 data_sorted.sort_values(by = 'total', ascending=False, inplace = True)
-print(data)
-
+print(data_sorted)
 
 #calculating top ten values by ecosystem
 
 #calculating % of supply emitted
+
+#saving data to new csv or appends to existing csv
+if '/Users/kamilwojnowski/Fintech/Tracker/Dummy Data/dummyfile3.csv':
+    data_sorted.to_csv(path_or_buf='/Users/kamilwojnowski/Fintech/Tracker/Dummy Data/dummyfile3.csv', mode='w', index=False, header=True)
+else:
+    data_sorted.to_csv(path_or_buf='/Users/kamilwojnowski/Fintech/Tracker/Dummy Data/dummyfile3.csv', mode='a', index=False, header=False)
