@@ -11,7 +11,7 @@ from pycoingecko import CoinGeckoAPI
 cg = CoinGeckoAPI()
 
 #reading csv data into a dataframe
-print("Enter File Path")
+print("Enter Input File Path")
 file_getter = Path(input())
 data = pd.read_csv(file_getter)
 
@@ -105,7 +105,7 @@ print(data_sorted)
 #calculating % of supply emitted
 
 #saving data to new csv or appends to existing csv
-if '/Users/kamilwojnowski/Fintech/Tracker/Dummy Data/dummyfile3.csv':
-    data_sorted.to_csv(path_or_buf='/Users/kamilwojnowski/Fintech/Tracker/Dummy Data/dummyfile3.csv', mode='a', index=False, header=False)
+if '/Users/kamilwojnowski/Fintech/Tracker/Dummy Data/dummyfileouput.csv':
+    data_sorted.to_csv(path_or_buf='/Users/kamilwojnowski/Fintech/Tracker/Dummy Data/dummyfileoutput.csv', mode='a', index=False, header=False)
 else:
-    data_sorted.to_csv(path_or_buf='/Users/kamilwojnowski/Fintech/Tracker/Dummy Data/dummyfile3.csv', mode='w', index=False, header=True)
+    data_sorted.to_csv(path_or_buf='/Users/kamilwojnowski/Fintech/Tracker/Dummy Data/dummyfileouput.csv', mode='w', index=False, header=True)
